@@ -9,7 +9,7 @@ import jxl.Workbook;
 import jxl.WorkbookSettings;
 
 public class StringBuilderToJson {
-	private static final String QUOTATION_MARKS = "\"";// 双引号
+	private static final String QUOTATION_MARKS = "\"";
 	private static String readExcel(int col, String lang) throws Exception {
 		String charset = getCharset(lang);
 		
@@ -46,7 +46,7 @@ public class StringBuilderToJson {
 			}
 
 		}
-		result.deleteCharAt(result.length() -1); //去掉最后一个逗号
+		result.deleteCharAt(result.length() -1); //remove the last commas
 		result.append("}");
 		String toJson = result.toString();
 //		System.out.println(toJson);
@@ -62,7 +62,7 @@ public class StringBuilderToJson {
 	}
 
 	public static void main(String[] args) throws IOException {
-		// 读取Excel
+		// read Excel
 
 		String[] lang = { "cn", "en", "ru", "ja", "ko", "es", "fr" };
 		for (int i = 0; i < lang.length; i++) {
@@ -75,7 +75,7 @@ public class StringBuilderToJson {
 				OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
 				
 				osw.write(on);
-				osw.flush();//当输出的文件都是大于8kb的话，flush（）可以不写
+				osw.flush();
 				fos.close();
 				System.out.println(lang[i] + ".json is Done!");
 			} catch (Exception e) {
